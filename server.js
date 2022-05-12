@@ -21,11 +21,10 @@ const getAnswer = (req, res) => {
     let answer = response.data;
     answer = response.data.split(/\r?\n/);
     answer.pop();
-    console.log(answer)
     res.status(200).send(answer);
   })
   .catch((err) => {
-    res.send(err);
+    res.status(404).send(err);
   })
 }
 

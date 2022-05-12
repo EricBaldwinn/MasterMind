@@ -1,13 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import {Inputs} from './Inputs.jsx';
 
 const App = () => {
-  const [numbers, setNumbers] = useState([]);
+  const [answer, setAnswer] = useState([]);
+
 
   useEffect(() => {
     axios.get('/setAnswer')
     .then((data) => {
-      setNumbers(data.data);
+      setAnswer(data.data);
     })
     .catch((err) => {
       console.log(err);
@@ -17,7 +19,9 @@ const App = () => {
 
   return (
     <div>
-      <h1>Hellow World!</h1>
+      <h1>MasterMind</h1>
+      <h2>Total Wins: </h2>
+      <Inputs />
     </div>
   )
 };
