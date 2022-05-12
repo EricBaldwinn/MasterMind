@@ -22,6 +22,19 @@ export const Inputs = () => {
     }
   }
 
+  const deleteNum = () => {
+    if (numbers.length >= 1) {
+      let numCopy = numbers.substring(0, numbers.length - 1);
+      setNumbers(numCopy);
+    }
+  }
+
+  const clearNums = () => {
+    if (numbers.length >= 1) {
+      setNumbers('');
+    }
+  }
+
   return (
     <OuterDiv>
     <InputDiv>
@@ -31,8 +44,8 @@ export const Inputs = () => {
           </NumpadDiv>
       ))}
       </InputDiv>
-      <button>Delete</button>
-      <button>Clear</button>
+      <button type="button" onClick={deleteNum}>Delete</button>
+      <button type="button" onClick={clearNums}>Clear</button>
       <button>Submit</button>
       <form role="submitGuess" onSubmit={submitGuess}>
       <InputNums type='text' value={numbers} maxLength='4' minLength='0' onChange={inputChange}></InputNums>
