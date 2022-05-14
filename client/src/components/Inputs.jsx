@@ -1,19 +1,21 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {InputDiv, NumpadDiv, OuterDiv, InputNums} from '../../dist/styling/inputs.styling';
 
-export const Inputs = () => {
-  const [guess, setGuess] = useState([]);
+export const Inputs = ({checkGuess}) => {
   const [numbers, setNumbers] = useState('');
   const numpad = [0, 1, 2, 3, 4, 5, 6, 7];
+
 
   const inputChange = (event) => {
     setNumbers(event.target.value)
   }
 
-  const submitGuess = () => {
+  const submitGuess = (event) => {
     event.preventDefault();
-    setGuess(numbers.split(''));
     setNumbers('');
+    if (numbers.length === 4) {
+      checkGuess(numbers.split(''));
+    }
   }
 
   const addNum = (num) => {
@@ -35,6 +37,7 @@ export const Inputs = () => {
     }
   }
 
+
   return (
     <OuterDiv>
     <InputDiv>
@@ -46,7 +49,7 @@ export const Inputs = () => {
       </InputDiv>
       <button type="button" onClick={deleteNum}>Delete</button>
       <button type="button" onClick={clearNums}>Clear</button>
-      <button>Submit</button>
+      <button type="button" onClick={submitGuess}>Submit</button>
       <form role="submitGuess" onSubmit={submitGuess}>
       <InputNums type='text' value={numbers} maxLength='4' minLength='0' onChange={inputChange}></InputNums>
       </form>
