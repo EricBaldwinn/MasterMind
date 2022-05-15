@@ -6,8 +6,9 @@ import { AppDiv } from '../../dist/styling/app.styling.js';
 
 const App = () => {
   const [answer, setAnswer] = useState([]);
-  // const [results, setResults] = useState({});
+  const [results, setResults] = useState([]);
   const [guesses, setGuesses] = useState([]);
+  const [winner, setWinner] = useState(false);
 
 
   useEffect(() => {
@@ -21,6 +22,7 @@ const App = () => {
   }, [])
 
   const checkGuess = (guess) => {
+    let winner = true;
     let result = [null, null, null, null];
     let missed = {};
     for (let i = 0; i < guess.length; i++) {
@@ -36,6 +38,7 @@ const App = () => {
 
     for (let x = 0; x < result.length; x++) {
       if (result[x] === null) {
+        winner = false;
         if (missed[guess[x]] && missed[guess[x]] > 0) {
           result[x] = 'half';
           if (missed[guess[x]] > 1) {
@@ -46,17 +49,22 @@ const App = () => {
         }
       }
     }
-    setGuesses([...guesses, guess, result])
+    setWinner(winner);
+    setResults([...results, result.sort()]);
+    setGuesses([...guesses, guess]);
   }
 
+
   console.log('answer', answer)
-  console.log(guesses)
+  console.log('guesses', guesses)
   return (
     <AppDiv>
       <h1>MasterMind</h1>
       <h2>Total Wins: </h2>
       <Inputs checkGuess={checkGuess} />
-      <Attempts guesses={guesses} />
+      <Attempts results={results} guesses={guesses} />
+      {guesses.length === 10 ?  <div>Answer: {answer}</div> : ''}
+      {winner ? <div>Congratz ur amazing</div> : ''}
     </AppDiv>
   )
 };

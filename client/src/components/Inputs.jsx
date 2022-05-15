@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {InputDiv, NumpadDiv, OuterDiv, Numbers, ButtonDiv, ButtonStyle, GuessInput} from '../../dist/styling/inputs.styling';
+import {InputDiv, NumpadDiv, OuterDiv, Numbers, ButtonDiv, ButtonStyle, GuessInput, GuessOuter, GuessInner} from '../../dist/styling/inputs.styling';
 
 export const Inputs = ({checkGuess}) => {
   const [numbers, setNumbers] = useState('');
@@ -52,9 +52,13 @@ export const Inputs = ({checkGuess}) => {
       <ButtonStyle type="button" onClick={clearNums}>Clear</ButtonStyle>
       <ButtonStyle type="button" onClick={submitGuess}>Submit</ButtonStyle>
       </ButtonDiv>
+      <GuessOuter>
+        <GuessInner>
       <form role="submitGuess" onSubmit={submitGuess}>
       <GuessInput type='text' value={numbers} maxLength='4' minLength='0' onChange={inputChange}></GuessInput>
       </form>
+        </GuessInner>
+      </GuessOuter>
     </OuterDiv>
   )
 }
