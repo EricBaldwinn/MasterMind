@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Inputs } from './Inputs.jsx';
 import { Attempts } from './Attempts.jsx';
+import { AppDiv } from '../../dist/styling/app.styling.js';
 
 const App = () => {
   const [answer, setAnswer] = useState([]);
@@ -51,12 +52,12 @@ const App = () => {
   console.log('answer', answer)
   console.log(guesses)
   return (
-    <div>
+    <AppDiv>
       <h1>MasterMind</h1>
       <h2>Total Wins: </h2>
       <Inputs checkGuess={checkGuess} />
       <Attempts guesses={guesses} />
-    </div>
+    </AppDiv>
   )
 };
 
