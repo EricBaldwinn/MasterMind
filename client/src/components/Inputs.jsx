@@ -55,7 +55,7 @@ export const Inputs = ({checkGuess}) => {
       <GuessOuter>
         <GuessInner>
       <form role="submitGuess" onSubmit={submitGuess}>
-      <GuessInput type='text' value={numbers} maxLength='4' minLength='0' onChange={inputChange}></GuessInput>
+      <GuessInput type='text' value={numbers} minLength='0' maxLength='4' onChange={inputChange}></GuessInput>
       </form>
         </GuessInner>
       </GuessOuter>

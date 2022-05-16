@@ -8,7 +8,7 @@ export const Attempts = ({ results, guesses }) => {
   const wrongDot = <img src="https://img.icons8.com/emoji/48/000000/black-circle-emoji.png" />;
 
   const dots = (result) => {
-      if (result === 'right') {
+      if (result === 'correct') {
         return correctDot;
       }
       if (result === 'half') {
@@ -21,7 +21,7 @@ export const Attempts = ({ results, guesses }) => {
 
   return (
     <div>
-      <h1>Previous Attempts: {guesses.length}</h1>
+      <h1>Total Attempts: {guesses.length}</h1>
       <OuterAttempt>
         {guesses.map((guess, index) => {
           return (
