@@ -50,9 +50,7 @@ const App = () => {
         winner = false;
         if (missed[guess[x]] && missed[guess[x]] > 0) {
           result[x] = 'half';
-          if (missed[guess[x]] >= 1) {
-            missed[guess[x]]--;
-          }
+          missed[guess[x]]--;
         } else {
           result[x] = 'wrong';
         }

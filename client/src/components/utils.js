@@ -10,7 +10,7 @@ export const displayHints = (results, guesses, answers) => {
     for (let i = 0; i < lastGuess.length; i++) {
       const guess = lastGuess[i];
       if (answers[i] === guess) {
-        return <p>{guess} is correct</p>
+        return guess + ' is correct';
       }
     }
   }
@@ -19,11 +19,13 @@ export const displayHints = (results, guesses, answers) => {
     for (let i = 0; i < lastGuess.length; i++) {
       const guess = lastGuess[i];
       if (answers.includes(guess)) {
-        return <p>{guess} is half right</p>
+        return guess + ' is half right';
       }
     }
   }
   if (lastResult[0] === 'wrong') {
-    return <p>{answers[0]} is a correct number</p>
+    return answers[0] + ' is a correct number';
   }
 }
+
+

@@ -23,16 +23,16 @@ export const Attempts = ({ results, guesses, showHints }) => {
     <div>
       <h1>Total Attempts: {guesses.length}</h1>
       <IconContainer>
-      <p>Click for hints</p>
+      <p>Click for a hint</p>
       <img src="https://img.icons8.com/emoji/50/000000/question-mark-emoji.png" onClick={showHints}/>
       </IconContainer>
       <OuterAttempt>
         {guesses.map((guess, index) => {
           return (
-            <InnerAttempt>
+            <InnerAttempt key={index}>
               {guess}
               {results[index].map((result, idx) => (
-                  <RowDiv>
+                  <RowDiv key={idx}>
                   {dots(result)}
                   </RowDiv>
               ))}
