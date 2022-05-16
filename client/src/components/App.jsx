@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Inputs } from './Inputs.jsx';
 import { Attempts } from './Attempts.jsx';
-import { AppDiv, StyledModal, RulesDiv, ModalText, ModalButton } from '../../dist/styling/app.styling.js';
+import { AppDiv, StyledModal, RulesDiv, ModalText, ModalButton, IconContainer } from '../../dist/styling/app.styling.js';
 import { ModalProvider } from 'styled-react-modal';
+import { displayHints } from './utils.js';
 
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
   const [totalWins, setTotalWins] = useState(0);
   const [gamesPlayed, setGamesPlayed] = useState(0);
   const [rules, setRules] = useState(false);
+  const [hints, setHints] = useState(false);
 
 
   useEffect(() => {
@@ -43,11 +45,12 @@ const App = () => {
     }
 
     for (let x = 0; x < result.length; x++) {
+      console.log('missed in half', missed)
       if (result[x] === null) {
         winner = false;
         if (missed[guess[x]] && missed[guess[x]] > 0) {
           result[x] = 'half';
-          if (missed[guess[x]] > 1) {
+          if (missed[guess[x]] >= 1) {
             missed[guess[x]]--;
           }
         } else {
@@ -85,22 +88,45 @@ const App = () => {
     setRules(!rules);
   }
 
+  const showHints = () => {
+    if (results.length > 0) {
+      setHints(!hints);
+    }
+  }
+
+
+
 
   console.log('answer', answer)
-  console.log('guesses', guesses)
+  console.log('results', results)
   return (
     <AppDiv>
       <h1>MasterMind</h1>
+      <IconContainer>
       <p>Click for rules</p>
       <img src="https://img.icons8.com/ios/50/000000/rules.png" onClick={showRules} />
+      </IconContainer>
+      {hints ?
+        <ModalProvider>
+          <StyledModal isOpen={hints} aria-modal={true} role="dialog" onEscapeKeydown={showHints}>
+            <RulesDiv>
+              <ModalText>
+                {displayHints(results, guesses, answer)}
+              </ModalText>
+              <ModalButton type="button" onClick={showHints}>Click to close</ModalButton>
+            </RulesDiv>
+          </StyledModal>
+        </ModalProvider> : ''}
       {rules ?
         <ModalProvider>
           <StyledModal isOpen={rules} aria-modal={true} role="dialog" onEscapeKeydown={showRules}>
             <RulesDiv>
               <ModalText>
-                Goal: Guess the correct number combination (duplicate numbers are possible)
+                Goal: Guess the correct number combination within 10 attempts
                 <br></br>
-                Guess Feedback
+                (duplicate numbers are possible)
+                <br></br>
+                Attempt Feedback
                 <br></br>
                 Green Dot: correct number in right spot
                 <br></br>
@@ -108,13 +134,13 @@ const App = () => {
                 <br></br>
                 Black Dot: wrong number
               </ModalText>
-              <ModalButton type="button" onClick={showRules}>Click me to close</ModalButton>
+              <ModalButton type="button" onClick={showRules}>Click to close</ModalButton>
             </RulesDiv>
           </StyledModal>
         </ModalProvider> : ''}
       <h2>Wins / Games Played: {totalWins} | {gamesPlayed}</h2>
       <Inputs checkGuess={checkGuess} />
-      <Attempts results={results} guesses={guesses} />
+      <Attempts results={results} guesses={guesses} showHints={showHints}/>
       {loser ?
         <ModalProvider>
           <StyledModal isOpen={loser} aria-modal={true} role="dialog" onEscapeKeydown={playAgain}>

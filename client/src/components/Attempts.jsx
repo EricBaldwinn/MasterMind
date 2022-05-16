@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { OuterAttempt, InnerAttempt, ColDiv, RowDiv } from '../../dist/styling/attempts.styling';
+import { OuterAttempt, InnerAttempt, ColDiv, RowDiv, IconContainer } from '../../dist/styling/attempts.styling';
 
-export const Attempts = ({ results, guesses }) => {
+export const Attempts = ({ results, guesses, showHints }) => {
 
   const correctDot = <img src="https://img.icons8.com/emoji/48/000000/green-circle-emoji.png" />;
   const halfDot = <img src="https://img.icons8.com/emoji/48/000000/red-circle-emoji.png" />;
@@ -22,6 +22,10 @@ export const Attempts = ({ results, guesses }) => {
   return (
     <div>
       <h1>Total Attempts: {guesses.length}</h1>
+      <IconContainer>
+      <p>Click for hints</p>
+      <img src="https://img.icons8.com/emoji/50/000000/question-mark-emoji.png" onClick={showHints}/>
+      </IconContainer>
       <OuterAttempt>
         {guesses.map((guess, index) => {
           return (
