@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Inputs } from './Inputs.jsx';
 import { Attempts } from './Attempts.jsx';
-import { AppDiv, StyledModal, RulesDiv } from '../../dist/styling/app.styling.js';
+import { AppDiv, StyledModal, RulesDiv, ModalText, ModalButton } from '../../dist/styling/app.styling.js';
 import { ModalProvider } from 'styled-react-modal';
 
 
@@ -97,7 +97,7 @@ const App = () => {
         <ModalProvider>
           <StyledModal isOpen={rules} aria-modal={true} role="dialog" onEscapeKeydown={showRules}>
             <RulesDiv>
-              <p>
+              <ModalText>
                 Goal: Guess the correct number combination (duplicate numbers are possible)
                 <br></br>
                 Guess Feedback
@@ -107,8 +107,8 @@ const App = () => {
                 Red Dot: correct number in wrong spot
                 <br></br>
                 Black Dot: wrong number
-              </p>
-              <button type="button" onClick={showRules}>Click me to close</button>
+              </ModalText>
+              <ModalButton type="button" onClick={showRules}>Click me to close</ModalButton>
             </RulesDiv>
           </StyledModal>
         </ModalProvider> : ''}
@@ -119,15 +119,15 @@ const App = () => {
         <ModalProvider>
           <StyledModal isOpen={loser} aria-modal={true} role="dialog" onEscapeKeydown={playAgain}>
             <h1>Try Again!</h1>
-            <p>Answer: {answer}</p>
-            <button type="button" onClick={playAgain}>Click me to play again!</button>
+            <ModalText>Answer: {answer}</ModalText>
+            <ModalButton type="button" onClick={playAgain}>Click me to play again!</ModalButton>
           </StyledModal>
         </ModalProvider> : ''}
       {winner ?
         <ModalProvider>
           <StyledModal isOpen={winner} aria-modal={true} role="dialog" onEscapeKeydown={playAgain}>
             <h1>You're a winner!</h1>
-            <button type="button" onClick={playAgain}>Click me to play again!</button>
+            <ModalButton type="button" onClick={playAgain}>Click me to play again!</ModalButton>
           </StyledModal>
         </ModalProvider> : ''}
     </AppDiv>
