@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { TimerDiv, TimerButton } from '../../dist/styling/timer.styling';
 
-export const Timer = () => {
+export const Timer = ({ resetTimer, setResetTimer }) => {
 const [counter, setCounter] = useState(180);
 const [isActive, setIsActive] = useState(false);
 
@@ -11,6 +11,11 @@ const toggle = () => {
 }
 
 useEffect(() => {
+  if (resetTimer === true) {
+    setIsActive(false);
+    setCounter(180);
+    setResetTimer(false);
+  }
   let interval = null;
   if (isActive && counter > 0) {
     interval = setInterval(() => {

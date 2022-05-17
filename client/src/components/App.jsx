@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Inputs } from './Inputs.jsx';
 import { Attempts } from './Attempts.jsx';
 import { Timer } from './Timer.jsx';
+import { InputPlayer } from './InputPlayer.jsx';
 import { AppDiv, StyledModal, RulesDiv, ModalText, ModalButton, IconContainer, Wins, TitleContainer } from '../../dist/styling/app.styling.js';
 import { ModalProvider } from 'styled-react-modal';
 import { displayHints } from './utils.js';
@@ -18,6 +19,9 @@ const App = () => {
   const [gamesPlayed, setGamesPlayed] = useState(0);
   const [rules, setRules] = useState(false);
   const [hints, setHints] = useState(false);
+  const [resetTimer, setResetTimer] = useState(false);
+  const [playerName, setPlayerName] = useState('');
+
 
 
   useEffect(() => {
@@ -69,6 +73,7 @@ const App = () => {
     if (winner) {
       setTotalWins(totalWins + 1);
     }
+    setResetTimer(true);
     setGamesPlayed(gamesPlayed + 1);
     setGuesses([]);
     setResults([]);
@@ -93,13 +98,41 @@ const App = () => {
     }
   }
 
+const showName = () => {
+  axios.get('/playerInfo', {
+    params: {
+      playerName: playerName
+    }
+  })
+  .then((response) => {
+    console.log(response)
+    setTotalWins(response.data.totalWins)
+    setTotalGames(response.data.totalGames)
+  })
+  .catch((err) => {
+    console.log(err)
+  })
+}
 
+const addNewPlayer = () => {
+  axios.post('/playerInfo', {playerName: playerName})
+    .then((response) => {
+      console.log('new user added')
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
 
+const setPlayer = (event) => {
+  setPlayerName(event.target.value);
+}
 
   console.log('answer', answer)
   console.log('results', results)
   return (
     <AppDiv>
+      <InputPlayer setPlayer={setPlayer} showName={showName} addNewPlayer={addNewPlayer} playerName={playerName}/>
       <TitleContainer>
       <h1>MasterMind</h1>
       <Wins>Wins / Games Played: {totalWins} | {gamesPlayed}</Wins>
@@ -141,7 +174,7 @@ const App = () => {
           </StyledModal>
         </ModalProvider> : ''}
       <Inputs checkGuess={checkGuess} />
-      <Timer />
+      <Timer resetTimer={resetTimer} setResetTimer={setResetTimer}/>
       <Attempts results={results} guesses={guesses} showHints={showHints}/>
       {loser ?
         <ModalProvider>
