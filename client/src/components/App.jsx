@@ -9,7 +9,7 @@ import { ModalProvider } from 'styled-react-modal';
 import { displayHints } from './utils.js';
 
 
-const App = () => {
+export const App = () => {
   const [answer, setAnswer] = useState([]);
   const [results, setResults] = useState([]);
   const [guesses, setGuesses] = useState([]);
@@ -28,6 +28,7 @@ const App = () => {
   useEffect(() => {
     axios.get('/setAnswer')
       .then((data) => {
+        console.log(data.data)
         setAnswer(data.data);
       })
       .catch((err) => {
@@ -201,5 +202,3 @@ const App = () => {
     </AppDiv>
   )
 };
-
-export default App;
