@@ -7,7 +7,10 @@ export const Inputs = ({checkGuess}) => {
 
 
   const inputChange = (event) => {
-    setNumbers(event.target.value)
+    const re = /^[0-7\b]+$/;
+    if (event.target.value === '' || re.test(event.target.value)) {
+      setNumbers(event.target.value)
+    }
   }
 
   const submitGuess = (event) => {
