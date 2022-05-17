@@ -1,15 +1,21 @@
 import React from 'react';
-import { ModalButton } from '../../dist/styling/app.styling';
-import axios from 'axios';
+import { PlayerContainer, OuterPlayerContainer, PlayerButtons, IconContainer } from '../../dist/styling/inputplayer.styling';
 
-export const InputPlayer = ({ setPlayer, playerName, showName, addNewPlayer }) => {
+
+export const InputPlayer = ({ setPlayer, playerName, showName, addNewPlayer, showRules }) => {
 
 
   return (
-    <div>
-      <input type="text" value={playerName} onChange={setPlayer}></input>
-      <ModalButton type="button" onClick={showName}>Returning Player</ModalButton>
-      <ModalButton type="button" onClick={addNewPlayer}>NewPlayer</ModalButton>
-    </div>
+    <OuterPlayerContainer>
+      <IconContainer>
+        <p>How to play</p>
+        <img src="https://img.icons8.com/ios/50/000000/rules.png" onClick={showRules} />
+      </IconContainer>
+      <PlayerContainer>
+        <input placeholder="Enter Player Name" type="text" value={playerName} onChange={setPlayer}></input>
+        <PlayerButtons type="button" onClick={showName}>Returning Player</PlayerButtons>
+        <PlayerButtons type="button" onClick={addNewPlayer}>NewPlayer</PlayerButtons>
+      </PlayerContainer>
+    </OuterPlayerContainer>
   )
 }

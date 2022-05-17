@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { OuterAttempt, InnerAttempt, ColDiv, RowDiv, IconContainer } from '../../dist/styling/attempts.styling';
+import { OuterAttempt, InnerAttempt, RowDiv, IconContainer } from '../../dist/styling/attempts.styling';
 
 export const Attempts = ({ results, guesses, showHints }) => {
 

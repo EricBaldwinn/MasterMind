@@ -4,7 +4,7 @@ import { Inputs } from './Inputs.jsx';
 import { Attempts } from './Attempts.jsx';
 import { Timer } from './Timer.jsx';
 import { InputPlayer } from './InputPlayer.jsx';
-import { AppDiv, StyledModal, RulesDiv, ModalText, ModalButton, IconContainer, Wins, TitleContainer } from '../../dist/styling/app.styling.js';
+import { AppDiv, StyledModal, RulesDiv, ModalText, ModalButton, IconContainer, Wins, TitleContainer, Title } from '../../dist/styling/app.styling.js';
 import { ModalProvider } from 'styled-react-modal';
 import { displayHints } from './utils.js';
 
@@ -143,15 +143,11 @@ const App = () => {
   console.log('results', results)
   return (
     <AppDiv>
-      <InputPlayer setPlayer={setPlayer} showName={showName} addNewPlayer={addNewPlayer} playerName={playerName} />
+      <InputPlayer showRules={showRules} setPlayer={setPlayer} showName={showName} addNewPlayer={addNewPlayer} playerName={playerName} />
       <TitleContainer>
-        <h1>MasterMind</h1>
+        <Title>MasterMind</Title>
         <Wins>Wins / Games Played: {totalWins} | {gamesPlayed}</Wins>
       </TitleContainer>
-      <IconContainer>
-        <p>How to play</p>
-        <img src="https://img.icons8.com/ios/50/000000/rules.png" onClick={showRules} />
-      </IconContainer>
       {hints ?
         <ModalProvider>
           <StyledModal isOpen={hints} aria-modal={true} role="dialog" onEscapeKeydown={showHints}>
