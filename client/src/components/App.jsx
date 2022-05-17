@@ -21,6 +21,7 @@ const App = () => {
   const [hints, setHints] = useState(false);
   const [resetTimer, setResetTimer] = useState(false);
   const [playerName, setPlayerName] = useState('');
+  const [findPlayerGames, setFindPlayerGames] = useState('');
 
 
 
@@ -33,6 +34,7 @@ const App = () => {
         console.log(err);
       })
   }, [])
+
 
   const checkGuess = (guess) => {
     let winner = true;
@@ -50,7 +52,6 @@ const App = () => {
     }
 
     for (let x = 0; x < result.length; x++) {
-      console.log('missed in half', missed)
       if (result[x] === null) {
         winner = false;
         if (missed[guess[x]] && missed[guess[x]] > 0) {
@@ -63,18 +64,19 @@ const App = () => {
     }
     if (guesses.length === 9 && winner === false) {
       setLoser(true);
+      setGamesPlayed(gamesPlayed + 1);
+    } else if (winner === true) {
+      setWinner(winner);
+      setTotalWins(totalWins + 1);
+      setGamesPlayed(gamesPlayed + 1);
     }
-    setWinner(winner);
     setResults([...results, result.sort()]);
     setGuesses([...guesses, guess]);
   }
 
+
   const playAgain = () => {
-    if (winner) {
-      setTotalWins(totalWins + 1);
-    }
     setResetTimer(true);
-    setGamesPlayed(gamesPlayed + 1);
     setGuesses([]);
     setResults([]);
     setWinner(false);
@@ -85,6 +87,13 @@ const App = () => {
       })
       .catch((err) => {
         console.log(err);
+      })
+      axios.patch('/playerInfo', { playerName: findPlayerGames, totalWins: totalWins, totalGames: gamesPlayed })
+      .then((data) => {
+        console.log('patch data', data)
+      })
+      .catch((err) => {
+        console.log(err)
       })
   }
 
@@ -98,48 +107,50 @@ const App = () => {
     }
   }
 
-const showName = () => {
-  axios.get('/playerInfo', {
-    params: {
-      playerName: playerName
-    }
-  })
-  .then((response) => {
-    console.log(response)
-    setTotalWins(response.data.totalWins)
-    setTotalGames(response.data.totalGames)
-  })
-  .catch((err) => {
-    console.log(err)
-  })
-}
-
-const addNewPlayer = () => {
-  axios.post('/playerInfo', {playerName: playerName})
-    .then((response) => {
-      console.log('new user added')
+  const showName = () => {
+    axios.get('/playerInfo', {
+      params: {
+        playerName: playerName
+      }
     })
-    .catch((err) => {
-      console.log(err)
-    })
-}
+      .then((response) => {
+        setTotalWins(response.data[0].totalwins)
+        setGamesPlayed(response.data[0].totalgames)
+      })
+      .catch((err) => {
+        console.log('this is the error', err)
+      })
+    setPlayerName('');
+  }
 
-const setPlayer = (event) => {
-  setPlayerName(event.target.value);
-}
+  const addNewPlayer = () => {
+    axios.post('/playerInfo', { playerName: playerName })
+      .then(() => {
+        console.log('new user added')
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    setPlayerName('');
+  }
+
+  const setPlayer = (event) => {
+    setPlayerName(event.target.value);
+    setFindPlayerGames(event.target.value);
+  }
 
   console.log('answer', answer)
   console.log('results', results)
   return (
     <AppDiv>
-      <InputPlayer setPlayer={setPlayer} showName={showName} addNewPlayer={addNewPlayer} playerName={playerName}/>
+      <InputPlayer setPlayer={setPlayer} showName={showName} addNewPlayer={addNewPlayer} playerName={playerName} />
       <TitleContainer>
-      <h1>MasterMind</h1>
-      <Wins>Wins / Games Played: {totalWins} | {gamesPlayed}</Wins>
+        <h1>MasterMind</h1>
+        <Wins>Wins / Games Played: {totalWins} | {gamesPlayed}</Wins>
       </TitleContainer>
       <IconContainer>
-      <p>How to play</p>
-      <img src="https://img.icons8.com/ios/50/000000/rules.png" onClick={showRules} />
+        <p>How to play</p>
+        <img src="https://img.icons8.com/ios/50/000000/rules.png" onClick={showRules} />
       </IconContainer>
       {hints ?
         <ModalProvider>
@@ -174,8 +185,8 @@ const setPlayer = (event) => {
           </StyledModal>
         </ModalProvider> : ''}
       <Inputs checkGuess={checkGuess} />
-      <Timer resetTimer={resetTimer} setResetTimer={setResetTimer}/>
-      <Attempts results={results} guesses={guesses} showHints={showHints}/>
+      <Timer resetTimer={resetTimer} setResetTimer={setResetTimer} />
+      <Attempts results={results} guesses={guesses} showHints={showHints} />
       {loser ?
         <ModalProvider>
           <StyledModal isOpen={loser} aria-modal={true} role="dialog" onEscapeKeydown={playAgain}>

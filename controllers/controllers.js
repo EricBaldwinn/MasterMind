@@ -6,7 +6,7 @@ module.exports = {
     if (req.query.playerName !== undefined) {
       models.getPlayerInfo(req.query.playerName)
       .then((response) => {
-        res.send(response.rows);
+        res.status(202).send(response.rows)
       })
       .catch((err) => {
         res.status(400).send(err)
@@ -14,9 +14,13 @@ module.exports = {
     }
   },
   addNewPlayer: (req,res) => {
-    console.log(req.body)
     if (req.body.playerName !== undefined) {
       models.addNewPlayer(req.body.playerName)
+    }
+  },
+  addPlayerGames: (req, res) => {
+    if (req.body.playerName !== undefined) {
+      models.addPlayerGames(req.body.playerName, req.body.totalWins, req.body.totalGames)
     }
   }
 }

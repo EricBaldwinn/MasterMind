@@ -1,19 +1,20 @@
 require('dotenv').config({path:__dirname+'../.env'});
-const { Pool } = require('pg')
-const pool = new Pool({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
+const { Client } = require('pg');
+const client = new Client({
+  user: process.env.USER,
   database: 'players',
-  port: process.env.DB_PORT
+  port: process.env.PORT
 })
 
-pool.connect()
-.then(() => {
-  console.log('Connected to postgres')
-})
-.catch((err) => {
-  console.log(err)
-})
+const db = client.connect();
 
-module.exports = pool;
+db
+  .then(db => console.log('Connect to Postgres'))
+  .catch(err => {
+    console.log('There was a problem connecting to Postgres', err);
+  });
+
+
+  module.exports = client;
+
 

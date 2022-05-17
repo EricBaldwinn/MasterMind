@@ -33,3 +33,4 @@ const getAnswer = (req, res) => {
 app.get('/setAnswer', getAnswer);
 app.get('/playerInfo', controllers.getPlayerInfo);
 app.post('/playerInfo', controllers.addNewPlayer);
+app.patch('/playerInfo', controllers.addPlayerGames);
