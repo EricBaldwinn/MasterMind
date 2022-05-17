@@ -1,4 +1,3 @@
-
 CREATE DATABASE players;
 
 \c players;
