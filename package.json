@@ -16,7 +16,7 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jjhuang417/react-webpack-template/issues"
+    "url": "git+https://github.com/EricBaldwinn/MasterMind.git"
   },
   "homepage": "https://github.com/EricBaldwinn/MasterMind#readme",
   "devDependencies": {
