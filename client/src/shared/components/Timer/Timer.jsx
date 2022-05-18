@@ -11,11 +11,6 @@ const toggle = () => {
 }
 
 useEffect(() => {
-  if (resetTimer === true) {
-    setIsActive(false);
-    setCounter(180);
-    setResetTimer(false);
-  }
   let interval = null;
   if (isActive && counter > 0) {
     interval = setInterval(() => {
