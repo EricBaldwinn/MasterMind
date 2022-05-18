@@ -38,7 +38,7 @@ export const App = () => {
 
 
   const checkGuess = (guess) => {
-    let winner = true;
+    let playerWinner = true;
     let result = [null, null, null, null];
     let missed = {};
     for (let i = 0; i < guess.length; i++) {
@@ -54,7 +54,7 @@ export const App = () => {
 
     for (let x = 0; x < result.length; x++) {
       if (result[x] === null) {
-        winner = false;
+        playerWinner = false;
         if (missed[guess[x]] && missed[guess[x]] > 0) {
           result[x] = 'half';
           missed[guess[x]]--;
@@ -63,11 +63,11 @@ export const App = () => {
         }
       }
     }
-    if (guesses.length === 9 && winner === false) {
+    if (guesses.length === 9 && playerWinner === false) {
       setLoser(true);
       setGamesPlayed(gamesPlayed + 1);
-    } else if (winner === true) {
-      setWinner(winner);
+    } else if (playerWinner === true) {
+      setWinner(playerWinner);
       setTotalWins(totalWins + 1);
       setGamesPlayed(gamesPlayed + 1);
     }
