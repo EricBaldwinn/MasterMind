@@ -9,7 +9,7 @@ This is a MasterMind game which is a strategy game where the player acts as a co
 ## How to play
 ---
 1. Install dependencies: `npm install`
-2. Install Postgres: https://www.postgresql.org/download/
+2. Install Postgres: https://www.postgresql.org/download/ (You will need Postgres installed locally to run this game)
 3. Run the Node(Express) Server: `npm run start`
 4. Run WebPack: `npm run build`
 5. Open the MasterMind game at http://localhost:3000
