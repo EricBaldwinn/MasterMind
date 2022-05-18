@@ -31,7 +31,7 @@ useEffect(() => {
   return (
     <TimerDiv>
       {counter === 0 ? <h1>Out of time!</h1> : <h1>Time Remaining: {counter} Seconds</h1>}
-      <TimerButton type="button" onClick={toggle}>Start Timer</TimerButton>
+      <TimerButton type="button" onClick={toggle}>{isActive ? 'Reset Timer' : 'Start Timer'}</TimerButton>
     </TimerDiv>
   )
 }

@@ -4,22 +4,6 @@ import { Dots } from '../Dots/Dots.jsx';
 
 export const Attempts = ({ results, guesses, showHints }) => {
 
-  const correctDot = <img src="https://img.icons8.com/emoji/48/000000/green-circle-emoji.png" />;
-  const halfDot = <img src="https://img.icons8.com/emoji/48/000000/red-circle-emoji.png" />;
-  const wrongDot = <img src="https://img.icons8.com/emoji/48/000000/black-circle-emoji.png" />;
-
-  const dots = (result) => {
-      if (result === 'correct') {
-        return correctDot;
-      }
-      if (result === 'half') {
-        return halfDot;
-      }
-      if (result === 'wrong') {
-        return wrongDot;
-      }
-  }
-
   return (
     <div>
       <h1>Total Attempts: {guesses.length}</h1>

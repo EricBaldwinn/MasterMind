@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {InputDiv, NumpadDiv, OuterDiv, Numbers, ButtonDiv, ButtonStyle, GuessInput, GuessOuter, GuessInner} from './inputs.styling';
 
 export const Inputs = ({checkGuess}) => {

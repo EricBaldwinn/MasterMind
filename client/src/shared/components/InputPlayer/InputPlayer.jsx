@@ -2,9 +2,9 @@ import React from 'react';
 import { PlayerContainer, OuterPlayerContainer, PlayerButtons, IconContainer, PlayText } from './inputplayer.styling';
 
 
-export const InputPlayer = ({ setPlayer, playerName, showName, addNewPlayer, toggleRules }) => {
+export const InputPlayer = ({ setPlayer, playerName, showPlayerStats, addNewPlayer, toggleRules }) => {
 
-
+  
   return (
     <OuterPlayerContainer>
       <IconContainer>
@@ -13,7 +13,7 @@ export const InputPlayer = ({ setPlayer, playerName, showName, addNewPlayer, tog
       </IconContainer>
       <PlayerContainer>
         <input placeholder="Enter Player Name" type="text" value={playerName} onChange={setPlayer}></input>
-        <PlayerButtons type="button" onClick={showName}>Returning Player</PlayerButtons>
+        <PlayerButtons type="button" onClick={showPlayerStats}>Returning Player</PlayerButtons>
         <PlayerButtons type="button" onClick={addNewPlayer}>NewPlayer</PlayerButtons>
       </PlayerContainer>
     </OuterPlayerContainer>

@@ -28,7 +28,6 @@ export const App = () => {
   useEffect(() => {
     axios.get('/setAnswer')
       .then((data) => {
-        console.log(data.data)
         setAnswer(data.data);
       })
       .catch((err) => {
@@ -91,7 +90,7 @@ export const App = () => {
       })
       axios.patch('/playerInfo', { playerName: findPlayerGames, totalWins: totalWins, totalGames: gamesPlayed })
       .then((data) => {
-        console.log('patch data', data)
+        console.log('players stats were updated')
       })
       .catch((err) => {
         console.log(err)
@@ -108,7 +107,7 @@ export const App = () => {
     }
   }
 
-  const showName = () => {
+  const showPlayerStats = () => {
     axios.get('/playerInfo', {
       params: {
         playerName: playerName
@@ -141,10 +140,10 @@ export const App = () => {
   }
 
   console.log('answer', answer)
-  console.log('results', results)
+
   return (
     <AppDiv>
-      <InputPlayer toggleRules={toggleRules} setPlayer={setPlayer} showName={showName} addNewPlayer={addNewPlayer} playerName={playerName} />
+      <InputPlayer toggleRules={toggleRules} setPlayer={setPlayer} showPlayerStats={showPlayerStats} addNewPlayer={addNewPlayer} playerName={playerName} />
       <TitleContainer>
         <Title>MasterMind</Title>
         <Wins>Wins / Games Played: {totalWins} | {gamesPlayed}</Wins>
