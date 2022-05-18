@@ -120,6 +120,7 @@ export const App = () => {
       .catch((err) => {
         console.log('this is the error', err)
       })
+    setFindPlayerGames(playerName);
     setPlayerName('');
   }
 
@@ -131,18 +132,18 @@ export const App = () => {
       .catch((err) => {
         console.log(err)
       })
+    setFindPlayerGames(playerName);
     setPlayerName('');
   }
 
   const setPlayer = (event) => {
     setPlayerName(event.target.value);
-    setFindPlayerGames(event.target.value);
   }
 
 
   return (
     <AppDiv>
-      <InputPlayer toggleRules={toggleRules} setPlayer={setPlayer} showPlayerStats={showPlayerStats} addNewPlayer={addNewPlayer} playerName={playerName} />
+      <InputPlayer toggleRules={toggleRules} setPlayer={setPlayer} showPlayerStats={showPlayerStats} addNewPlayer={addNewPlayer} playerName={playerName} findPlayerGames={findPlayerGames}/>
       <TitleContainer>
       <Timer resetTimer={resetTimer} setResetTimer={setResetTimer} />
         <Title>MasterMind</Title>

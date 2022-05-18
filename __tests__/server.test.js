@@ -2,28 +2,29 @@ const request = require("supertest");
 const server = require('../server.js');
 
 
-describe('Recieve an array of length of 4', () => {
-  test('the response is an array of 4 elements', (done) => {
+
+  test("/setAnswer route works", (done) => {
     request(server)
     .get('/setAnswer')
-    .then((response) => {
-      expect(JSON.parse(response.text).length).toBe(4);
+    .expect(200)
+    done();
+  });
+
+
+  test('Numbers are between 0-7', (done) => {
+    request(server)
+    .get('/setAnswer')
+  .then((response) => {
+      const isBelowThreshold = (currentValue) => currentValue <= 7 && currentValue >= 0;
+      let result = response.body.map(Number);
+      expect(result.every(isBelowThreshold)).toBe(true)
       done();
     });
   });
 
-  test('Array elements are numbers', (done) => {
-    request(server)
-    .get('/setAnswer')
-    .then((response) => {
-      const elements = (element) =>
-        typeof Number(element) === 'number';
-        let output = JSON.parse(response.text);
-        expect(output.every(elements)).toBe(true);
-        done();
-      });
-    });
-  });
+
+
+
 
 
 

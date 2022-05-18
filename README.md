@@ -9,9 +9,10 @@ This is a MasterMind game which is a strategy game where the player acts as a co
 ## How to play
 ---
 1. Install dependencies: `npm install`
-2. Run the Node(Express) Server: `npm run start`
-3. Run WebPack: `npm run build`
-4. Open the MasterMind game at http://localhost:3000
+2. Install Postgres 
+3. Run the Node(Express) Server: `npm run start`
+4. Run WebPack: `npm run build`
+5. Open the MasterMind game at http://localhost:3000
 
 ## Keeping Track of Score
 ---
@@ -20,9 +21,6 @@ This MasterMind Game uses a Postgres Database to keep track of local player scor
 ### First Time Setup
 1. Enter Postgres Shell: `psql postgres`
 2. Run the schema file: `\i schema.sql`
-### Returning Users
-1. Enter Postgres Shell: `psql postgres`
-2. Change to players database: `\c players`
 
 ## Rules
 - The player will have 10 attempts to guess the correct number sequence
@@ -57,7 +55,7 @@ This MasterMind Game uses a Postgres Database to keep track of local player scor
 
 3. Score Keeper: My first thought was to build a database to record new player data. Currently I record the players' name, total wins, and total games played. I built the PlayerInputs.jsx component because I need the player to be able to enter their name and on button click decide to record a new entry in my database if they are a new player, or if they are a returning player send back their game history. Everytime a game concludes on the modale button to play again I update the player's total wins and total games based on their playerName. Currently the database is local only, if I had more time I would have liked to deploy the database to an EC2 instance which would be able to record all players' data.
 
-4. Tests: I wanted to be sure the data I'm receiving from the Random.org API endpoint is correct, so I built server unit tests using Jest and SuperTest. I was able to test if the data I'm receiving is the correct length of numbers and whether each returned value is a number.
+4. Tests: I wanted to be sure the data I'm receiving from the Random.org API endpoint is correct, so I built server unit tests using Jest and SuperTest. I was able to test if the data I'm receiving is coming in. I also tested is the data received is a number between 0 and 7.
 
 ## Tech Stack
 ---

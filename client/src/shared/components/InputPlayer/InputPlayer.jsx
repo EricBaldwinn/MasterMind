@@ -1,10 +1,10 @@
 import React from 'react';
-import { PlayerContainer, OuterPlayerContainer, PlayerButtons, IconContainer, PlayText } from './inputplayer.styling';
+import { PlayerContainer, OuterPlayerContainer, PlayerButtons, IconContainer, PlayText, CurrentPlayer } from './inputplayer.styling';
 
 
-export const InputPlayer = ({ setPlayer, playerName, showPlayerStats, addNewPlayer, toggleRules }) => {
+export const InputPlayer = ({ setPlayer, playerName, showPlayerStats, addNewPlayer, toggleRules, findPlayerGames }) => {
 
-  
+
   return (
     <OuterPlayerContainer>
       <IconContainer>
@@ -16,6 +16,7 @@ export const InputPlayer = ({ setPlayer, playerName, showPlayerStats, addNewPlay
         <PlayerButtons type="button" onClick={showPlayerStats}>Returning Player</PlayerButtons>
         <PlayerButtons type="button" onClick={addNewPlayer}>NewPlayer</PlayerButtons>
       </PlayerContainer>
+      <CurrentPlayer>Current Player: {findPlayerGames}</CurrentPlayer>
     </OuterPlayerContainer>
   )
 }

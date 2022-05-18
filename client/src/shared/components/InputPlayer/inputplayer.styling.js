@@ -37,3 +37,10 @@ export const PlayText = styled.p`
 position: relative;
 right: 10px;
 `
+
+export const CurrentPlayer = styled.p`
+position: absolute;
+right: 50px;
+top: 26px;
+font-size: 18px;
+`
