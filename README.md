@@ -21,7 +21,7 @@ This MasterMind Game uses a Postgres Database to keep track of local player scor
 ### First Time Setup
 1. Enter Postgres Shell: `psql postgres`
 2. Run the schema file: `\i schema.sql`
-Note: You will need to create a .env file similar to the env.example in the database folder
+- Note: You will need to create a .env file similar to the env.example in the database folder
 
 ## Rules
 - The player will have 10 attempts to guess the correct number sequence
