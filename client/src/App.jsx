@@ -139,7 +139,6 @@ export const App = () => {
     setFindPlayerGames(event.target.value);
   }
 
-  console.log('answer', answer)
 
   return (
     <AppDiv>

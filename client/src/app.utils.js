@@ -1,8 +1,6 @@
 export const displayHints = (results, guesses, answers) => {
   const lastResult = results[results.length - 1];
   const lastGuess = guesses[guesses.length - 1];
-  console.log(results)
-  console.log(lastResult)
   if (lastResult[0] === 'correct') {
     for (let i = 0; i < lastGuess.length; i++) {
       const guess = lastGuess[i];
