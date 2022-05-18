@@ -39,7 +39,7 @@ This MasterMind Game uses a Postgres Database to keep track of local player scor
 
 2. I then decided on the tech stack which I ended up using React.js and Node.js. After my initial requirements were fullfilled I decided to use Postgres as the database to keep track of scores.
 
-3. I started by cloning a template of an Express server and Webpack setup. After that I wanted to create my route to Random.org, which I first tested by hitting the API on Postman to visualize the data sent back. I realized I would need to manipulate the data sent back into the format I wanted, which I did inside my Express route to expedite the process of sending correct data to the frontend.
+3. I started by cloning a template of an Express server and Webpack setup [^2]. After that I wanted to create my route to Random.org, which I first tested by hitting the API on Postman to visualize the data sent back. I realized I would need to manipulate the data sent back into the format I wanted, which I did inside my Express route to expedite the process of sending correct data to the frontend.
 
 4. I then created a basic App.jsx component to be able to see what I'm rendering on my localhost:3000. I knew I would need to then create my Inputs component because I would need the player's guess to create the game logic, by comparing the player's guess to the correct answer. The Inputs.jsx component handles the player's guesses and allows the user to use number buttons or enter manually into the input field.
 
@@ -56,8 +56,6 @@ This MasterMind Game uses a Postgres Database to keep track of local player scor
 
 3. Score Keeper: My first thought was to build a database to record new player data. Currently I record the players' name, total wins, and total games played. I built the PlayerInputs.jsx component because I need the player to be able to enter their name and on button click decide to record a new entry in my database if they are a new player, or if they are a returning player send back their game history. Everytime a game concludes on the modale button to play again I update the player's total wins and total games based on their playerName. Currently the database is local only, if I had more time I would have liked to deploy the database to an EC2 instance which would be able to record all players' data.
 
-4. Tests: I wanted to be sure the data I'm receiving from the Random.org API endpoint is arriving, so I built server unit tests using Jest and SuperTest. I was able to test if the data I'm receiving is coming in. I also tested is the data received is a number between 0 and 7.
-
 ## Tech Stack
 ---
 - React.js
@@ -65,3 +63,4 @@ This MasterMind Game uses a Postgres Database to keep track of local player scor
 - Postgres
 - Styled Components
 
+[^2]: Note: Webpack/Express template taken from here https://github.com/jjhuang417/react-webpack-template (consists of initial Webpack setup and Express Server without routes)
