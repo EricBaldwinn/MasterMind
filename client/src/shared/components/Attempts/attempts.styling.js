@@ -35,4 +35,6 @@ height: 24px;
 export const IconContainer = styled.div`
 display: flex;
 flex-direction: row;
+justify-content: flex-start;
+margin: 12px;
 `

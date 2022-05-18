@@ -3,7 +3,7 @@ import {InputDiv, NumpadDiv, OuterDiv, Numbers, ButtonDiv, ButtonStyle, GuessInp
 
 export const Inputs = ({checkGuess}) => {
   const [numbers, setNumbers] = useState('');
-  const numpad = [0, 1, 2, 3, 4, 5, 6, 7];
+  const numpad = [0, 1, 2, 3, 4, 5, 6, 7, ''];
 
 
   const inputChange = (event) => {

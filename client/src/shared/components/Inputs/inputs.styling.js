@@ -3,8 +3,11 @@ import styled from 'styled-components';
 
 export const OuterDiv = styled.div`
 display: flex;
-flex-direction: row;
+flex-direction: column;
 justify-content: space-evenly;
+align-items: center;
+margin: 12px;
+height: 240px;
 `
 
 export const InputDiv = styled.div`
@@ -13,7 +16,7 @@ flex-direction: row;
 flex-wrap: wrap;
 align-items: center;
 justify-content: space-evenly;
-width: 96px;
+width: 148px;
 `
 
 export const NumpadDiv = styled.div`
@@ -31,8 +34,6 @@ position: sticky;
 `
 
 export const GuessInput = styled.input`
-position: relative;
-top: 160px;
 border: 0;
 letter-spacing: 35px;
 padding-left: 15px;
@@ -62,11 +63,12 @@ export const Numbers = styled.p`
 
 export const ButtonDiv = styled.div`
 display: flex;
-flex-direction: column;
+flex-direction: row;
 justify-content: space-between;
 `
 
 export const ButtonStyle = styled.button`
+    width: 96px;
     padding: 0.3em 1.2em;
     margin: 0 0.3em 0.3em 0;
     border-radius: 2em;

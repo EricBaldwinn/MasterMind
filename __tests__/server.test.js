@@ -1,9 +1,5 @@
 const request = require("supertest");
-const express = require("express");
-const axios = require("axios");
-
 const server = require('../server.js');
-
 
 
 describe('Recieve an array of length of 4', () => {

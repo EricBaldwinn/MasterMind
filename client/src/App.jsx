@@ -145,6 +145,7 @@ export const App = () => {
     <AppDiv>
       <InputPlayer toggleRules={toggleRules} setPlayer={setPlayer} showPlayerStats={showPlayerStats} addNewPlayer={addNewPlayer} playerName={playerName} />
       <TitleContainer>
+      <Timer resetTimer={resetTimer} setResetTimer={setResetTimer} />
         <Title>MasterMind</Title>
         <Wins>Wins / Games Played: {totalWins} | {gamesPlayed}</Wins>
       </TitleContainer>
@@ -181,7 +182,6 @@ export const App = () => {
           </StyledModal>
         </ModalProvider> : ''}
       <Inputs checkGuess={checkGuess} />
-      <Timer resetTimer={resetTimer} setResetTimer={setResetTimer} />
       <Attempts results={results} guesses={guesses} showHints={showHints} />
       {loser ?
         <ModalProvider>

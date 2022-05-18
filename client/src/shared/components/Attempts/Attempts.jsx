@@ -6,11 +6,11 @@ export const Attempts = ({ results, guesses, showHints }) => {
 
   return (
     <div>
-      <h1>Total Attempts: {guesses.length}</h1>
       <IconContainer>
-      <p>Click for a hint</p>
       <img src="https://img.icons8.com/emoji/50/000000/question-mark-emoji.png" onClick={showHints}/>
+      <p>Click for a hint</p>
       </IconContainer>
+      <h1>Total Attempts: {guesses.length}</h1>
       <OuterAttempt>
         {guesses.map((guess, index) => {
           return (
