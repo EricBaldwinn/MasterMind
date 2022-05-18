@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Inputs } from './Inputs.jsx';
-import { Attempts } from './Attempts.jsx';
-import { Timer } from './Timer.jsx';
-import { InputPlayer } from './InputPlayer.jsx';
-import { AppDiv, StyledModal, RulesDiv, ModalText, ModalButton, IconContainer, Wins, TitleContainer, Title } from '../../dist/styling/app.styling.js';
+import { Inputs } from '../src/shared/components/Inputs/Inputs.jsx';
+import { Attempts } from '../src/shared/components/Attempts/Attempts.jsx';
+import { Timer } from '../src/shared/components/Timer/Timer.jsx';
+import { InputPlayer } from '../src/shared/components/InputPlayer/InputPlayer.jsx';
+import { AppDiv, StyledModal, RulesDiv, ModalText, ModalButton, Wins, TitleContainer, Title } from './app.styling.js';
 import { ModalProvider } from 'styled-react-modal';
-import { displayHints } from './utils.js';
+import { displayHints } from './app.utils';
 
 
 export const App = () => {
@@ -98,7 +98,7 @@ export const App = () => {
       })
   }
 
-  const showRules = () => {
+  const toggleRules = () => {
     setRules(!rules);
   }
 
@@ -144,7 +144,7 @@ export const App = () => {
   console.log('results', results)
   return (
     <AppDiv>
-      <InputPlayer showRules={showRules} setPlayer={setPlayer} showName={showName} addNewPlayer={addNewPlayer} playerName={playerName} />
+      <InputPlayer toggleRules={toggleRules} setPlayer={setPlayer} showName={showName} addNewPlayer={addNewPlayer} playerName={playerName} />
       <TitleContainer>
         <Title>MasterMind</Title>
         <Wins>Wins / Games Played: {totalWins} | {gamesPlayed}</Wins>
@@ -162,7 +162,7 @@ export const App = () => {
         </ModalProvider> : ''}
       {rules ?
         <ModalProvider>
-          <StyledModal isOpen={rules} aria-modal={true} role="dialog" onEscapeKeydown={showRules}>
+          <StyledModal isOpen={rules} aria-modal={true} role="dialog" onEscapeKeydown={toggleRules}>
             <RulesDiv>
               <ModalText>
                 Goal: Guess the correct numbers in the correct sequence within 10 attempts and 3 minutes
@@ -177,7 +177,7 @@ export const App = () => {
                 <br></br>
                 Black Dot: wrong number
               </ModalText>
-              <ModalButton type="button" onClick={showRules}>Click to close</ModalButton>
+              <ModalButton type="button" onClick={toggleRules}>Click to close</ModalButton>
             </RulesDiv>
           </StyledModal>
         </ModalProvider> : ''}

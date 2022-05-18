@@ -1,14 +1,14 @@
 import React from 'react';
-import { PlayerContainer, OuterPlayerContainer, PlayerButtons, IconContainer, PlayText } from '../../dist/styling/inputplayer.styling';
+import { PlayerContainer, OuterPlayerContainer, PlayerButtons, IconContainer, PlayText } from './inputplayer.styling';
 
 
-export const InputPlayer = ({ setPlayer, playerName, showName, addNewPlayer, showRules }) => {
+export const InputPlayer = ({ setPlayer, playerName, showName, addNewPlayer, toggleRules }) => {
 
 
   return (
     <OuterPlayerContainer>
       <IconContainer>
-      <img src="https://img.icons8.com/windows/64/000000/information.png" onClick={showRules}/>
+      <img src="https://img.icons8.com/windows/64/000000/information.png" onClick={toggleRules}/>
         <PlayText>How to play</PlayText>
       </IconContainer>
       <PlayerContainer>

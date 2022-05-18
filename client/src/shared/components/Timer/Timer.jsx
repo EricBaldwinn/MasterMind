@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { TimerDiv, TimerButton } from '../../dist/styling/timer.styling';
+import { TimerDiv, TimerButton } from './timer.styling';
 
 export const Timer = ({ resetTimer, setResetTimer }) => {
 const [counter, setCounter] = useState(180);

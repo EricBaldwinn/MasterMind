@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {InputDiv, NumpadDiv, OuterDiv, Numbers, ButtonDiv, ButtonStyle, GuessInput, GuessOuter, GuessInner} from '../../dist/styling/inputs.styling';
+import {InputDiv, NumpadDiv, OuterDiv, Numbers, ButtonDiv, ButtonStyle, GuessInput, GuessOuter, GuessInner} from './inputs.styling';
 
 export const Inputs = ({checkGuess}) => {
   const [numbers, setNumbers] = useState('');

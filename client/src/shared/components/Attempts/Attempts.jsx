@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { OuterAttempt, InnerAttempt, RowDiv, IconContainer } from '../../dist/styling/attempts.styling';
+import React from 'react';
+import { OuterAttempt, InnerAttempt, RowDiv, IconContainer } from './attempts.styling';
+import { Dots } from '../Dots/Dots.jsx';
 
 export const Attempts = ({ results, guesses, showHints }) => {
 
@@ -33,7 +34,7 @@ export const Attempts = ({ results, guesses, showHints }) => {
               {guess}
               {results[index].map((result, idx) => (
                   <RowDiv key={idx}>
-                  {dots(result)}
+                  <Dots result={result}/>
                   </RowDiv>
               ))}
             </InnerAttempt>

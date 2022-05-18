@@ -1,6 +1,3 @@
-import React from 'react';
-
-
 export const displayHints = (results, guesses, answers) => {
   const lastResult = results[results.length - 1];
   const lastGuess = guesses[guesses.length - 1];
