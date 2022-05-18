@@ -64,4 +64,5 @@ This MasterMind Game uses a Postgres Database to keep track of local player scor
 - React.js
 - Node.js (Express.js)
 - Postgres
+- Styled Components
 
