@@ -38,7 +38,7 @@ This MasterMind Game uses a Postgres Database to keep track of local player scor
 1. I wanted to conceptualize my MasterMind game design, so I started by diagramming a layout on Excalidraw.com
 <img width="670" alt="MasterMind Layout" src="https://user-images.githubusercontent.com/81985980/169106968-099d340d-b702-4625-b6d5-5d51ab3b2b5d.png">
 
-2. I then decided on the tech stack which I ended up using React.js and Node.js. After my initial requirements were fullfilled I decided to use Postgres as the database to keep track of scores. 
+2. I then decided on the tech stack which I ended up using React.js and Node.js. After my initial requirements were fullfilled I decided to use Postgres as the database to keep track of scores.
 
 3. I started by cloning a template of an Express server and Webpack setup. After that I wanted to create my route to Random.org, which I first tested by hitting the API on Postman to visualize the data sent back. I realized I would need to manipulate the data sent back into the format I wanted, which I did inside my Express route to expedite the process of sending correct data to the frontend.
 
@@ -55,9 +55,9 @@ This MasterMind Game uses a Postgres Database to keep track of local player scor
 
 2. Timer: My timer lives in the Timer.jsx component. I used a setinterval function to count down the time, subtracting 1 every second. This timer is initialized on button click, and will reset on a second click.
 
-3. Score Keeper: My first thought was to build a database to record new player data. Currently I record the players' name, total wins, and total games played. I built the PlayerInputs.jsx component because I need the player to be able to enter their name and on button click decide to record a new entry in my database if they are a new player, or if they are a returning player send back their game history. Everytime a game concludes on the modale button to play again I update the player's total wins and total games based on their playerName. Currently the database is local only, if I had more time I would have liked to deploy the database to an EC2 instance which would be able to record all players' data. 
+3. Score Keeper: My first thought was to build a database to record new player data. Currently I record the players' name, total wins, and total games played. I built the PlayerInputs.jsx component because I need the player to be able to enter their name and on button click decide to record a new entry in my database if they are a new player, or if they are a returning player send back their game history. Everytime a game concludes on the modale button to play again I update the player's total wins and total games based on their playerName. Currently the database is local only, if I had more time I would have liked to deploy the database to an EC2 instance which would be able to record all players' data.
 
-4. Tests: I wanted to be sure the data I'm receiving from the Random.org API endpoint is correct, so I built server unit tests using Jest and SuperTest. I was able to test if the data I'm receiving is the correct length of numbers and whether each returned value is a number. 
+4. Tests: I wanted to be sure the data I'm receiving from the Random.org API endpoint is correct, so I built server unit tests using Jest and SuperTest. I was able to test if the data I'm receiving is the correct length of numbers and whether each returned value is a number.
 
 ## Tech Stack
 ---
