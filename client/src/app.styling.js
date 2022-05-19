@@ -64,5 +64,6 @@ flex-direction: row;
 
 export const Title = styled.h1`
 position: absolute;
-left: 44%;
+left: 41%;
+font-size: 48px;
 `

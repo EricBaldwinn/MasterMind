@@ -14,13 +14,26 @@ module.exports = {
     }
   },
   addNewPlayer: (req,res) => {
-    if (req.body.playerName !== undefined) {
-      models.addNewPlayer(req.body.playerName)
+    let playerName = req.body.playerName;
+    if (playerName !== undefined) {
+      models.addNewPlayer(playerName)
+      .then(() => {
+        console.log('user added')
+      })
+      .catch((err) => {
+        console.log(err)
+      })
     }
   },
   addPlayerGames: (req, res) => {
     if (req.body.playerName !== undefined) {
       models.addPlayerGames(req.body.playerName, req.body.totalWins, req.body.totalGames)
+      .then(() => {
+        console.log('user games updated')
+      })
+      .catch((err) => {
+        console.log(err)
+      })
     }
   }
 }

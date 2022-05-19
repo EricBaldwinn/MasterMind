@@ -127,7 +127,7 @@ export const App = () => {
   const addNewPlayer = () => {
     axios.post('/playerInfo', { playerName: playerName })
       .then(() => {
-        console.log('new user added')
+       console.log('user added')
       })
       .catch((err) => {
         console.log(err)

@@ -4,7 +4,7 @@ const app = express();
 const port = 3000;
 const path = require('path');
 const controllers = require('./controllers/controllers.js');
-
+const db = require('./database/database.js');
 
 // Serving static files
 app.use(express.static(path.join(__dirname, 'client/dist')));
@@ -34,5 +34,6 @@ app.get('/setAnswer', getAnswer);
 app.get('/playerInfo', controllers.getPlayerInfo);
 app.post('/playerInfo', controllers.addNewPlayer);
 app.patch('/playerInfo', controllers.addPlayerGames);
+
 
 module.exports = app;
