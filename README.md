@@ -4,15 +4,6 @@ This is a MasterMind game which is a strategy game where the player acts as a co
 
 <img width="1435" alt="MasterMindSS" src="https://user-images.githubusercontent.com/81985980/169103113-7f671820-ee7f-418a-a421-77a00f6513fc.png">
 
-## Rules
-- The player will have 10 attempts to guess the correct number sequence
-- Each attempt will be a number between 0 - 7 (duplicate numbers are possible)
-- Feedback is given after each attempt:
-  1. A green dot indicates a correct number in a correct spot
-  2. A red dot indicates a correct number in a wrong spot
-  3. A black dot indicates a wrong number
-- Note: The feedback dots don't align with the attempted guess order
-
 ## Setup
 ---
 1. Install dependencies: `npm install`
