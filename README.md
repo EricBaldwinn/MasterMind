@@ -1,12 +1,19 @@
-![MasterMind (1)](https://user-images.githubusercontent.com/81985980/169102258-d116d9b7-1d96-4591-8b64-2547c84d6c29.png)
-
 ## Game Overview
 ---
 This is a MasterMind game which is a strategy game where the player acts as a code breaker, and must guess the correct number sequence within 10 attempts to win the game. In addition, players have the option of increasing difficulty by using the 3 minute timer. Below is an image of the overview of the game.
 
 <img width="1435" alt="MasterMindSS" src="https://user-images.githubusercontent.com/81985980/169103113-7f671820-ee7f-418a-a421-77a00f6513fc.png">
 
-## How to play
+## Rules
+- The player will have 10 attempts to guess the correct number sequence
+- Each attempt will be a number between 0 - 7 (duplicate numbers are possible)
+- Feedback is given after each attempt:
+  1. A green dot indicates a correct number in a correct spot
+  2. A red dot indicates a correct number in a wrong spot
+  3. A black dot indicates a wrong number
+- Note: The feedback dots don't align with the attempted guess order
+
+## Setup
 ---
 1. Install dependencies: `npm install`
 2. Install Postgres: https://www.postgresql.org/download/ (You will need Postgres installed locally to run this game)
@@ -23,19 +30,9 @@ This MasterMind Game uses a Postgres Database to keep track of local player scor
 2. Run the schema file: `\i schema.sql`
 - Note: You will need to create a .env file similar to the env.example in the database folder
 
-## Rules
-- The player will have 10 attempts to guess the correct number sequence
-- Each attempt will be a number between 0 - 7 (duplicate numbers are possible)
-- Feedback is given after each attempt:
-  1. A green dot indicates a correct number in a correct spot
-  2. A red dot indicates a correct number in a wrong spot
-  3. A black dot indicates a wrong number
-- Note: The feedback dots don't align with the attempted guess order
-
-## Building Process
+## Design Process
 ---
-1. I wanted to conceptualize my MasterMind game design, so I started by diagramming a layout on Excalidraw.com
-<img width="670" alt="MasterMind Layout" src="https://user-images.githubusercontent.com/81985980/169106968-099d340d-b702-4625-b6d5-5d51ab3b2b5d.png">
+1. I wanted to conceptualize my MasterMind game design, so I started by diagramming a layout on Excalidraw.com and planning out the components I would need and how the UI would look.
 
 2. I then decided on the tech stack which I ended up using React.js and Node.js. After my initial requirements were fullfilled I decided to use Postgres as the database to keep track of scores.
 
@@ -47,7 +44,7 @@ This MasterMind Game uses a Postgres Database to keep track of local player scor
 
 6. Once my game logic was working I created my Attempts.jsx component which shows the player's previous attempts and the feedback per attempt using the dots associated with each outcome. I created a child component for Attempts.jsx which is the Dots.jsx component which displays my feedback dots.
 
-## Extensions
+## Extra Features
 ---
 
 1. Hints: I built the hints extension by looking at the first feedback dot, and rendering a different hint for each option (correct, half, wrong) which appears after clicking the question mark icon. I included logic to only allow hints to appear after the player's first attempt.
