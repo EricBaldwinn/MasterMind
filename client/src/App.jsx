@@ -88,8 +88,8 @@ export const App = () => {
       .catch((err) => {
         console.log(err);
       })
-      axios.patch('/playerInfo', { playerName: findPlayerGames, totalWins: totalWins, totalGames: gamesPlayed })
-      .then((data) => {
+    axios.patch('/playerInfo', { playerName: findPlayerGames, totalWins: totalWins, totalGames: gamesPlayed })
+      .then(() => {
         console.log('players stats were updated')
       })
       .catch((err) => {
@@ -134,6 +134,8 @@ export const App = () => {
       })
     setFindPlayerGames(playerName);
     setPlayerName('');
+    setTotalWins(0);
+    setGamesPlayed(0);
   }
 
   const setPlayer = (event) => {

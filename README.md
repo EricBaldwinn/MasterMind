@@ -2,7 +2,7 @@
 
 ## Game Overview
 ---
-This is a MasterMind game which is a strategy game where the player acts as a code breaker, and must guess the correct number sequence to win the game. In addition, players have the option of increasing difficulty by using the 3 minute timer. Below is an image of the overview of the game.
+This is a MasterMind game which is a strategy game where the player acts as a code breaker, and must guess the correct number sequence within 10 attempts to win the game. In addition, players have the option of increasing difficulty by using the 3 minute timer. Below is an image of the overview of the game.
 
 <img width="1435" alt="MasterMindSS" src="https://user-images.githubusercontent.com/81985980/169103113-7f671820-ee7f-418a-a421-77a00f6513fc.png">
 
@@ -54,7 +54,7 @@ This MasterMind Game uses a Postgres Database to keep track of local player scor
 
 2. Timer: My timer lives in the Timer.jsx component. I used a setinterval function to count down the time, subtracting 1 every second. This timer is initialized on button click, and will reset on a second click.
 
-3. Score Keeper: My first thought was to build a database to record new player data. Currently I record the players' name, total wins, and total games played. I built the PlayerInputs.jsx component because I need the player to be able to enter their name and on button click decide to record a new entry in my database if they are a new player, or if they are a returning player send back their game history. Everytime a game concludes on the modale button to play again I update the player's total wins and total games based on their playerName. Currently the database is local only, if I had more time I would have liked to deploy the database to an EC2 instance which would be able to record all players' data.
+3. Score Keeper: My first thought was to build a database to record new player data. Using a database would allow me to save a variety of player data such as average attempts, player with the most wins, and more. Currently I record the players' name, total wins, and total games played. I built the PlayerInputs.jsx component because I need the player to be able to enter their name and on button click decide to record a new entry in my database if they are a new player, or if they are a returning player send back their game history. Everytime a game concludes on the modale button to play again I update the player's total wins and total games based on their playerName. Currently the database is local only, if I had more time I would have liked to deploy the database to an EC2 instance which would be able to record all players' data and I could implement deatures such as a leaderboard that would be open to all players.
 
 ## Tech Stack
 ---
