@@ -1,4 +1,4 @@
-## Game Overview
+## MasterMind Game Overview
 ---
 1. This is a MasterMind game which is a strategy game where the player acts as a code breaker, and must guess the correct number sequence within 10 attempts to win the game. In addition, players have the option of increasing difficulty by using the 3 minute timer.
 2. First time players will want to enter their player name in the top right corner and press the new player button.
