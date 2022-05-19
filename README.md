@@ -2,8 +2,8 @@
 ---
 1. This is a MasterMind game which is a strategy game where the player acts as a code breaker, and must guess the correct number sequence within 10 attempts to win the game. In addition, players have the option of increasing difficulty by using the 3 minute timer. Below is an image of the overview of the game.
 2. First time players will want to enter their player name in the top right corner and press the new player button.
-3. Feedback will be given every attempt and duplicate numbers are possible within the answer/attempts\
-4. Click the top left icon for indepth rules/feed back guide
+3. Feedback will be given every attempt and duplicate numbers are possible within the answer and attempts
+4. Click the top left icon for indepth rules and feedback guide
 
 <img width="1435" alt="MasterMindSS" src="https://user-images.githubusercontent.com/81985980/169103113-7f671820-ee7f-418a-a421-77a00f6513fc.png">
 
