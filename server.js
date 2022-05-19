@@ -4,7 +4,7 @@ const app = express();
 const port = 3000;
 const path = require('path');
 const controllers = require('./controllers/controllers.js');
-const db = require('./database/database.js');
+
 
 // Serving static files
 app.use(express.static(path.join(__dirname, 'client/dist')));
@@ -21,7 +21,7 @@ const getAnswer = (req, res) => {
   axios.get(randomUrl)
   .then((response) => {
     let answer = response.data;
-    answer = response.data.split(/\r?\n/);
+    answer = response.data.split(/\n/);
     answer.pop();
     res.status(200).send(answer);
   })
